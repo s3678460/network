@@ -23,12 +23,18 @@ module.exports = function validateSubmitInput(data) {
     }
 
    
+    if(!Validator.isInt(data.port1,{gt: 60999, lt: 62000})){
+        errors.port1="Port number must be between 61000 and 61999"
+    }
 
     if (Validator.isEmpty(data.port1)){
         errors.port1 = 'Port number must not be empty';
     }
 
 
+    if(!Validator.isInt(data.port2,{gt: 60999, lt: 62000})){
+        errors.port2="Port number must be between 61000 and 61999"
+    }
     if (Validator.matches(data.port2,data.port1)){
         errors.port2 = 'Port 2 must be different from Port 1'
     }

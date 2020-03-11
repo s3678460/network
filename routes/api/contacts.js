@@ -40,37 +40,15 @@ router.post("/submit", (req, res) => {
     return res.status(400).json(errors);
   }
   
-  lineReader.eachLine('files/file.txt', function(line){
-    if(line.includes(req.body.port1)){
-      errors.port1 = "Port number is existed"
-      return res.status(400).json(errors);
-
-    }
-    if(line.includes(req.body.port2)){
-      errors.port2 = "Port number is existed"
-      return res.status(400).json(errors);
-
-    }
-    else{
-      fs.appendFile('files/file.txt',req.body.port1+"\n"+req.body.port2+"\n", function(err){
-        if(err){
-          console.log('errors')
-        }
-        else {
-          console.log('Saved')
-          const newContact = new Contact({
-            studentNumber: req.body.studentNumber,
-            port1: req.body.port1,
-            port2: req.body.port2
-          });
-          newContact
-            .save()
-            .then(user => res.json(user))
-            .catch(err => console.log(err));
-        }
-      })
-    }
-  })
+  const newContact = new Contact({
+    studentNumber: req.body.studentNumber,
+    port1: req.body.port1,
+    port2: req.body.port2
+  });
+  newContact
+    .save()
+    .then(user => res.json(user))
+    .catch(err => console.log(err));
 
   
 
