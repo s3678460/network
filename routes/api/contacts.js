@@ -42,7 +42,12 @@ router.post("/submit", (req, res) => {
   }
 
   const { port1, port2 } = req.body;
-    if (checkPortAvailable(port1) == true) {
+  const studentNumber = req.body.studentNumber
+  if (userExist(studentNumber) == true) {
+    errors.studentNumber = "You have already picked ports"
+    return res.status(400).json(errors);
+  }
+  else if (checkPortAvailable(port1) == true) {
     errors.port1 = "Port number not available"
     return res.status(400).json(errors);
 
@@ -52,7 +57,15 @@ router.post("/submit", (req, res) => {
 
   } else {
     const newPorts = req.body.port1 + "\n" + req.body.port2 + "\n";
+    const newUser = req.body.studentNumber + "\n";
     fs.appendFile('files/file.txt', newPorts, function (err) {
+      if (err) {
+        throw err;
+      }
+
+    })
+
+    fs.appendFile('files/users.txt', newUser, function (err) {
       if (err) {
         throw err;
       }
@@ -84,8 +97,8 @@ router.post("/submit", (req, res) => {
       "minhhuynhrmit@gmail.com",
       "Network Programming - Port Selection",
       html
-    
-    
+
+
     )
   }
 
@@ -102,6 +115,20 @@ function checkPortAvailable(portNumber) {
     }
   })
   return result;
+}
+
+function userExist(studentNumber) {
+  var dataUser = fs.readFileSync('files/users.txt','utf8')
+  var user = dataUser.split('\n')
+  var resultUser = false;
+
+  user.forEach(user => {
+    if(user == studentNumber){
+      resultUser = true;
+    }
+  })
+  return resultUser;
+  
 }
 
 module.exports = router;
