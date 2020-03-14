@@ -85,7 +85,7 @@ router.post("/submit", (req, res) => {
     const html = `Network Programming - Port Selection
     <br/>
     <br/>
-    Student Number: ${newContact.studentNumber}
+    Student Number: s${newContact.studentNumber}
     <br/>
     Port 1: ${newContact.port1}
     <br/>
