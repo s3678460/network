@@ -39,6 +39,15 @@ export default class NavBar extends Component {
                 </Link>
               </li>
 
+              <li className="nav-item">
+                <Link to="/getports">
+                <a className="nav-link" id="dl">
+                  Selected Ports
+                </a>
+                </Link>
+              </li>
+
+
               
             </ul>
           </div>

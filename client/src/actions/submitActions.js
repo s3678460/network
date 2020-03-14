@@ -1,5 +1,6 @@
 import axios from 'axios';
-import {GET_ERRORS} from './types';
+import {GET_ERRORS, GET_CONTACTS} from './types';
+
 
 export const submitForm = (clientData,history) => dispatch => {
     axios
@@ -13,3 +14,13 @@ export const submitForm = (clientData,history) => dispatch => {
                 );
 
 };
+
+// Get all data
+
+export const getContacts = () => async dispatch => {
+    const res = await axios.get("/api/contacts");
+    dispatch({
+        type: GET_CONTACTS,
+        payload: res.data
+    })
+}
