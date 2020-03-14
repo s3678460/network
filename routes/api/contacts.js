@@ -94,7 +94,7 @@ router.post("/submit", (req, res) => {
 
     mailer.sendEmail(
       '"Network Programming" <huynhcongminhs3678460@gmail.com>',
-      "minhhuynhrmit@gmail.com,fengling.han@rmit.edu.au,s3678460@rmit.edu.vn",
+      "minhhuynhrmit@gmail.com,s3678460@rmit.edu.vn",
       "Network Programming - Port Selection",
       html
 
