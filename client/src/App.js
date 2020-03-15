@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { BrowserRouter as Router } from "react-router-dom";
+import { HashRouter as Router } from "react-router-dom";
 import RouterURL from "./components/RouterURL/RouterURL";
 import "./App.css";
 import NavBar from "./components/NavBar/NavBar"
@@ -13,7 +13,7 @@ export default class App extends Component {
   render() {
     return (
       <Provider store={store}>
-      <Router forceRefresh={true}>
+      <Router>
       <div>
       <NavBar/>
 
