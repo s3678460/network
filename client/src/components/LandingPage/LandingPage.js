@@ -8,7 +8,6 @@ import { submitForm } from "../../actions/submitActions";
 import classnames from "classnames";
 import DayPicker, { DateUtils } from "react-day-picker";
 import "react-day-picker/lib/style.css";
-// import DayPickerInput from "react-day-picker/DayPickerInput";
 import dateFnsFormat from 'date-fns/format';
 import dateFnsParse from 'date-fns/parse';
 
