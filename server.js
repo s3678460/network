@@ -13,14 +13,14 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'client/build')));
 
 
-//mapping route URL -> build/index.html (prevent F5 error) 
-app.get('/*', function(req, res) {
-    res.sendFile(path.join(__dirname, 'client/build/index.html'), function(err) {
-        if (err) {
-        res.status(500).send(err)
-        }
-    })
-})
+// //mapping route URL -> build/index.html (prevent F5 error) 
+// app.get('/*', function(req, res) {
+//     res.sendFile(path.join(__dirname, 'client/build/index.html'), function(err) {
+//         if (err) {
+//         res.status(500).send(err)
+//         }
+//     })
+// })
 
 // DB config
 const db = require('./config/keys').mongoURI;
